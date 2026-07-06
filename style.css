@@ -1,0 +1,232 @@
+/* ==========================================================
+   VARIABLES
+========================================================== */
+
+:root {
+
+  /* Layout */
+  --panel-width: 420px;
+  --large-panel-width: 840px;
+
+  --column-width: 380px;
+  --column-gap: 40px;
+
+  --page-padding: 24px;
+
+  /* Typography */
+  --body-font: Helvetica, Arial, sans-serif;
+
+  --body-size: 14px;
+  --body-line-height: 1.3;
+
+  --caption-size: 10px;
+  --caption-line-height: 1.25;
+
+}
+
+
+/* ==========================================================
+   RESET
+========================================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f5f3ef;
+  font-family: var(--body-font);
+}
+
+
+/* ==========================================================
+   HORIZONTAL LAYOUT
+========================================================== */
+
+.track {
+
+  display: flex;
+  align-items: stretch;
+
+  width: max-content;
+  min-width: 100vw;
+
+  height: 100vh;
+
+  overflow-x: auto;
+  overflow-y: hidden;
+
+}
+
+
+/* ==========================================================
+   PANELS
+========================================================== */
+
+.panel {
+
+  flex: 0 0 var(--panel-width);
+
+  height: 100vh;
+
+  padding: var(--page-padding);
+
+}
+
+.large {
+
+  flex-basis: var(--large-panel-width);
+
+}
+
+
+/* ==========================================================
+   TEXT
+========================================================== */
+
+.text-panel {
+
+  flex: 0 0 auto;
+
+  height: 100vh;
+
+  padding: var(--page-padding);
+
+}
+
+.essay {
+
+  height: calc(100vh - (var(--page-padding) * 2));
+
+  columns: var(--column-width) auto;
+
+  column-gap: var(--column-gap);
+
+}
+
+.essay p {
+  margin: 0 0 1.2em 0;
+
+  font-size: var(--body-size);
+  line-height: var(--body-line-height);
+}
+
+
+/* ==========================================================
+   IMAGES
+========================================================== */
+
+.image-panel {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+.image-panel img {
+
+  width: 100%;
+
+  height: auto;
+
+  display: block;
+
+  margin-bottom: 6px;
+
+}
+
+
+/* ==========================================================
+   CAPTIONS
+========================================================== */
+
+.caption {
+
+  margin: 0;
+
+  font-size: var(--caption-size);
+  line-height: var(--caption-line-height);
+
+}
+
+
+/* ==========================================================
+   MOBILE
+========================================================== */
+
+@media (max-width: 768px) {
+
+  :root {
+
+    --page-padding: 20px;
+
+    --body-size: 18px;
+    --body-line-height: 1.45;
+
+    --caption-size: 13px;
+
+  }
+
+  /* Hela sidan blir vertikal */
+  .track {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    overflow: visible;
+  }
+
+  /* Alla paneler blir fullbredd */
+  .panel,
+  .text-panel {
+
+    width: 100% !important;
+    height: auto;
+    min-height: auto;
+
+    padding: var(--page-padding);
+
+  }
+
+  /* Stäng av spalter */
+  .essay {
+
+    width: 100%;
+    height: auto;
+
+    columns: 1;
+    column-width: auto;
+    column-gap: 0;
+
+  }
+
+  /* Mobiltypografi */
+  .essay p {
+
+    width: 100%;
+    max-width: 100%;
+
+    font-size: var(--body-size);
+    line-height: var(--body-line-height);
+
+  }
+
+  /* Bilder */
+  .image-panel.large {
+    flex-basis: auto;
+    width: 100%;
+  }
+
+  .image-panel img {
+    margin-bottom: 12px;
+  }
+
+  /* Bildtext */
+  .caption {
+    font-size: var(--caption-size);
+    line-height: 1.3;
+  }
+
+}
